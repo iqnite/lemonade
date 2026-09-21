@@ -9,25 +9,34 @@ public class SliceController : MonoBehaviour
     public float PlayerDrag;
     [Tooltip("Caps maximum drilling speed.")]
     public float PlayerMaxDrillSpeed;
+    public GameObject JuicePrefab;
+    public int JuiceAmount;
 
     SpriteRenderer spriteRenderer;
+    private int juiceToSpawn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        juiceToSpawn = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (juiceToSpawn > 0)
+        {
+            Instantiate(JuicePrefab, transform.position + Vector3.down * Random.Range(0.5f, 1.5f), Quaternion.identity);
+            juiceToSpawn--;
+        }
     }
 
     public void Drill()
     {
         Color color = spriteRenderer.color;
         color.a -= DrillStep;
+        juiceToSpawn += JuiceAmount;
         if (color.a <= 0)
         {
             Destroy(gameObject);
