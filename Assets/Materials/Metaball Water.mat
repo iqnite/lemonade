@@ -57,7 +57,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Treshold: 0.5
+    - _Treshold: 0.3
     m_Colors:
     - _JuiceColor: {r: 0.9098039, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
